@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginPages.authenitcation_activty"
+    android:padding="12dp">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/SingUp_ET_Layout_Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/ETLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/SingUp_ET_Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name"
+            android:inputType="textPersonName"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/SingUp_ET_Layout_Email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/SingUp_ET_Layout_Name"
+        style="@style/ETLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/SingUp_ET_Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/email" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/SingUp_ET_Layout_Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:endIconMode="password_toggle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/SingUp_ET_Layout_Email"
+        style="@style/ETLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/SingUp_ET_Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="@string/password" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/SignUp_Button_SingUp"
+        style="@style/MyButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/SingUp_ET_Layout_Password"/>
+
+    <ProgressBar
+        android:id="@+id/SignUp_ProgressBar_SingUp"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationZ="1dp"
+        android:visibility="gone"
+        android:padding="4dp"
+        android:layout_margin="8dp"
+        app:layout_constraintStart_toStartOf="@id/SignUp_Button_SingUp"
+        app:layout_constraintBottom_toBottomOf="@id/SignUp_Button_SingUp"
+        app:layout_constraintTop_toTopOf="@id/SignUp_Button_SingUp"
+        app:layout_constraintEnd_toEndOf="@id/SignUp_Button_SingUp"
+
+        />
+    <TextView
+        android:id="@+id/SingUp_TXT_Account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/already_have_an_account"
+        android:gravity="center"
+        android:layout_marginTop="12dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/SignUp_Button_SingUp"/>
+    <TextView
+        android:id="@+id/SignUp_TXT_Tari"
+        style="@style/AppNameStyle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/SingUp_TXT_Account"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

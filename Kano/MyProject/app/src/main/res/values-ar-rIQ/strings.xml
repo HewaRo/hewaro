@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyProject</string>
+    <string name="facebook" translatable="false">تسجيل الدخول عبر فيسبوك</string>
+    <string name="gmail" translatable="false">تسجيل الدخول عبر جيميل</string>
+    <string name="email" translatable="false">تسجيل الدخول عبر البريد الالكتروني</string>
+    <string name="log_in">Log In</string>
+    <string name="don_t_have_an_account">Dont have account</string>
+    <string name="logout">LogOut</string>
+    <string name="Cars">Cars</string>
+    <string name="Motorcycles">Motorcycles</string>
+    <string name="Mobile">Mobile</string>
+    <string name="LaptopandPc">Laptop and PC</string>
+    <string name="Realstate">Realstate</string>
+    <string name="already_have_an_account">Already have account</string>
+    <string name="sign_up">Sign up</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Elctronics">Elctronics</string>
+    <string name="Bikes">Bikes</string>
+    <string name="HandC">Helmets and Clothes</string>
+    <string name="PandA">Parts and Accesssories</string>
+    <string name="Duhok">Duhok</string>
+    <string name="bmw">BMW</string>
+    <string name="MG">MG</string>
+    <string name="Tesla">Tesla</string>
+    <string name="ClassA">Class A</string>
+    <string name="FirstCalss">FirstClass</string>
+    <string name="secondCalss">Second Class</string>
+    <string name="CalssM">Class M</string>
+    <string name="CalssX">Class X</string>
+    <string name="Other">Other</string>
+    <string name="Calss3">Class 3</string>
+    <string name="ClassS">Class S</string>
+    <string name="S350">S350</string>
+    <string name="C550">550</string>
+    <string name="MG5">MG5</string>
+    <string name="MobileandTaplet">Mobile And Tab</string>
+    <string name="tablet">Tablet</string>
+    <string name="SW">Smart watches</string>
+    <string name="Baghdad">Baghdad</string>
+    <string name="Hawler">Hawler</string>
+    <string name="Sulaymaniah">Sulaymaniah</string>
+    <string name="CarsFS">Cars for sale</string>
+    <string name="CarsFR">Cars for rent</string>
+    <string name="CarsParts">Car parts</string>
+
+    <string name="select_type">Select Type</string>
+    <string name="test">Test</string>
+
+    <!--    afterChooseTypeCars-->
+    <string name="accessories">accessories</string>
+    <string name="wheels">Wheels</string>
+    <string name="spare_parts_of_cars">Spare parts of cars</string>
+    <string name="heavy_machinery">Heavy machinery</string>
+    <string name="boats">Boats</string>
+
+    <!--    afterChooseTypeMotors-->
+
+    <string name="spare_parts_of_motorss">Spare parts of motorcycles</string>
+</resources>
