@@ -10,16 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -150,10 +146,10 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
         myRefAll.setValue(ad);
         myRefMyAds.setValue(ad);
         myRef1.setValue(ad).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
+            if (!task.isSuccessful()) {
                 //Toast.makeText(AddPostActivity.this, "Your ad has been published successfully!", Toast.LENGTH_SHORT).show();
-            } else {
                 Toast.makeText(AddPostActivity.this, Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -196,11 +192,24 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public String getDate() {
-        return new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+        return convertArabicDigitsToEnglish(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date()));
     }
 
     public String getTime() {
-        return new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+        return convertArabicDigitsToEnglish( new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date()));
+    }
+
+    public String convertArabicDigitsToEnglish(String dateInArabic){
+        return dateInArabic.replace('١','1')
+                .replace('٢','2')
+                .replace('٣','3')
+                .replace('٤','4')
+                .replace('٥','5')
+                .replace('٦','6')
+                .replace('٧','7')
+                .replace('٨','8')
+                .replace('٩','9')
+                .replace('٠','0');
     }
 
     @Override

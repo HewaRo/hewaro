@@ -1,22 +1,20 @@
 package com.example.myproject.Fragments;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.myproject.Ad;
 import com.example.myproject.R;
 import com.example.myproject.show.ShowRecyclerViewAdapter;
-import com.example.myproject.show.onShowRecyclerViewItemClick;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,6 +28,7 @@ import java.util.Objects;
 
 public class MyAdsFragment extends Fragment {
     RecyclerView myAdsRV;
+    TextView textViewLoadingNoAds;
 
     public MyAdsFragment() {
         // Required empty public constructor
@@ -47,31 +46,29 @@ public class MyAdsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my_ads, container, false);
         findViews(view);
-        readFromFirebase(view);
+        readFromFirebase();
         return view;
     }
 
     public void findViews(View view) {
         myAdsRV = view.findViewById(R.id.fragment_my_ads_RV_my_ads);
+        textViewLoadingNoAds = view.findViewById(R.id.fragment_my_ads_TV_loading_no_ads_yet);
     }
 
     public void fillMyAdsRecyclerView(ArrayList<Ad> ads) {
 
-        ShowRecyclerViewAdapter adapter = new ShowRecyclerViewAdapter(ads, new onShowRecyclerViewItemClick() {
-            @Override
-            public void onShowItemClick(View showItem) {
-                TextView textView = showItem.findViewById(R.id.show_item_tv_date);
-                Toast.makeText(getContext(), "The date is: " + textView.getText().toString(), Toast.LENGTH_SHORT).show();
-            }
+        ShowRecyclerViewAdapter adapter = new ShowRecyclerViewAdapter(ads, showItem -> {
+            TextView textView = showItem.findViewById(R.id.show_item_tv_date);
+            Toast.makeText(getContext(), "The date is: " + textView.getText().toString(), Toast.LENGTH_SHORT).show();
         });
 
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 3, RecyclerView.VERTICAL, false);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 1, RecyclerView.VERTICAL, false);
         myAdsRV.setHasFixedSize(true);
         myAdsRV.setLayoutManager(layoutManager);
         myAdsRV.setAdapter(adapter);
     }
 
-    public void readFromFirebase(View view){
+    public void readFromFirebase(){
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Iraq");
@@ -86,6 +83,7 @@ public class MyAdsFragment extends Fragment {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                     ads.add(0,dataSnapshot1.getValue(Ad.class));
                 }
+                prepareTextView(ads);
                 fillMyAdsRecyclerView(ads);
             }
 
@@ -94,5 +92,18 @@ public class MyAdsFragment extends Fragment {
                 // Failed to read value
             }
         });
+    }
+
+    public void prepareTextView(ArrayList<Ad> ads){
+
+        if (ads.size() <= 0){
+            myAdsRV.setVisibility(View.GONE);
+            textViewLoadingNoAds.setVisibility(View.VISIBLE);
+            textViewLoadingNoAds.setText(getString(R.string.no_ads_yet));
+        }
+        else{
+            myAdsRV.setVisibility(View.VISIBLE);
+            textViewLoadingNoAds.setVisibility(View.GONE);
+        }
     }
 }

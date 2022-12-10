@@ -90,6 +90,42 @@
     <string name="home">Home</string>
     <string name="latest_ads">Latest ads</string>
     <string name="coming_soon">Coming soon إن شاء الله</string>
+    <string name="sections">Sections</string>
+    <string name="loading">Loading…</string>
+    <string name="no_ads_yet">Unfortunately, you have not\nadded any ADs yet!</string>
+    <string name="my_account">My Account</string>
+    <string name="membership_id">Membership ID</string>
+    <string name="null0">-</string>
+    <string name="account_details">Account Details</string>
+    <string name="membership_type">Membership Type</string>
+    <string name="open_shop">Open Shop</string>
+    <string name="free">Free</string>
+    <string name="_0">0</string>
+    <string name="views">Views</string>
+    <string name="_0_0">0.0</string>
+    <string name="rating">Rating</string>
+    <string name="hello_guest">Hello Guest</string>
+    <string name="wallet">Wallet</string>
+    <string name="add_credit_or_recharge">* Add credit or recharge voucher to top up your Wallet.\n* Do you want to boost more than one Ad? Buy a bundle now.</string>
+    <string name="credit">Credit</string>
+    <string name="open_wallet">Open Wallet</string>
+    <string name="job_applications">Job Applications</string>
+    <string name="job_profile">Job Profile</string>
+    <string name="complete_your_cv">* Complete your CV to increase your chances of getting hired.\n* It\'s not possible to apply for a job if completeness score is less than 50%></string>
+    <string name="bundles">Bundles</string>
+    <string name="complete_your_job_profile">Complete your job profile</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="invite_friends">Invite Friends</string>
+    <string name="my_ads_page">My Ads Page</string>
+    <string name="share">Share</string>
+    <string name="contact_us_know">Contact us know</string>
+    <string name="do_you_need_help">Do you need help?</string>
+    <string name="sales_team">Sales Team</string>
+    <string name="faq">FAQ      </string>
+    <string name="contact_us">Contact Us</string>
+    <string name="whatsapp">WhatsApp</string>
+    <string name="follow_us_on">Follow Us On</string>
 
 
 </resources>

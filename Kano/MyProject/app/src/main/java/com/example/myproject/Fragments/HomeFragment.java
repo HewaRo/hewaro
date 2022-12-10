@@ -15,6 +15,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.myproject.Ad;
 import com.example.myproject.ArraysLists;
 import com.example.myproject.Class.HomeRecyclerClass;
@@ -35,7 +38,7 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
 
     RecyclerView home_rv, latestAdsRV;
-    AutoCompleteTextView autoLatestAds;
+    ImageSlider imageSlider;
 
 
     public HomeFragment() {
@@ -52,13 +55,17 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        findViews(view);
         fillTypesRecyclerView(view);
         readFromFirebase(view);
-        autoLatestAds = view.findViewById(R.id.fragment_home_ACTV_latest_ads);
-        autoLatestAds.requestFocus();
+        prepareImageSlider();
         return view;
     }
 
+    public void findViews(View view){
+
+        imageSlider = view.findViewById(R.id.fragment_home_slider_image);
+    }
     public void fillTypesRecyclerView(View view) {
         home_rv = view.findViewById(R.id.home_rv);
         ArrayList<HomeRecyclerClass> home_item_array = new ArrayList<>();
@@ -137,6 +144,10 @@ public class HomeFragment extends Fragment {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                     ads.add(0,dataSnapshot1.getValue(Ad.class));
                 }
+                // this code is to show just 21 items HewaRo
+               while (ads.size()>21){
+                    ads.remove(0);
+                }
                 fillLatestAdsRecyclerView(view,ads);
             }
 
@@ -146,4 +157,19 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
+    public void prepareImageSlider(){
+        SlideModel slideModel1 = new SlideModel(R.drawable.slider_image_3, null, ScaleTypes.CENTER_CROP);
+        SlideModel slideModel2 = new SlideModel(R.drawable.slider_image_1, null, ScaleTypes.CENTER_CROP);
+        SlideModel slideModel3 = new SlideModel(R.drawable.slider_image_2, null, ScaleTypes.CENTER_CROP);
+        ArrayList<SlideModel> arrayList = new ArrayList<>();
+        arrayList.add(slideModel1);
+        arrayList.add(slideModel2);
+        arrayList.add(slideModel3);
+        imageSlider.setImageList(arrayList);
+        imageSlider.startSliding(1500);
+    }
+
+
+
 }

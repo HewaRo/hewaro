@@ -43,11 +43,13 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:21.1.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    //meowbottomnavigation
+
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
     implementation 'com.etebarian:meow-bottom-navigation:1.3.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.61"
     //circleImage
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //slider image
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 
 }

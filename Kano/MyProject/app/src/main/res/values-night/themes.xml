@@ -1,6 +1,6 @@
 <resources >
     <!-- Base application theme. -->
-    <style name="Theme.MyProject" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.MyProject" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/main</item>
         <item name="colorPrimaryVariant">@color/main</item>
@@ -57,6 +57,23 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:backgroundTint">@color/main</item>
     </style>
+    <style name="MyButtonMyAccount" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
+
+        <item name="cornerRadius">6dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">4dp</item>
+        <item name="iconSize">24dp</item>
+        <item name="strokeColor">@color/white</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:textDirection">firstStrong</item>
+        <item name="android:gravity">center</item>
+
+
+    </style>
     <style name="ETLayout" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="strokeColor">@color/teal_200</item>
 
@@ -105,7 +122,7 @@
     <style name="MyBottomNavigationBar" >
         <item name="itemBackground">@color/gray_44</item>
         <item name="itemIconTint">@drawable/bottom_navigation_items_color</item>
-        <item name="labelVisibilityMode">unlabeled</item>
+        <item name="labelVisibilityMode">selected</item>
 
     </style>
 </resources>

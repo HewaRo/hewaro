@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="don_t_have_an_account">Dont have account</string>
+    <string name="open_shop">Open Shop</string>
 </resources>
