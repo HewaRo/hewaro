@@ -725,7 +725,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="12dp"
-                android:layout_marginHorizontal="12dp"
+                android:layout_marginHorizontal="6dp"
                 android:layout_marginTop="6dp">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -774,7 +774,8 @@
                 android:gravity="center"
                 android:text="@string/logout"
                 android:textSize="24sp"
-                android:visibility="gone" />
+                android:layout_marginTop="6dp"
+                 />
 
         </LinearLayout>
     </ScrollView>
