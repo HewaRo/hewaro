@@ -1,6 +1,7 @@
 package com.example.myproject.latest;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,19 +11,24 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.myproject.Ad;
 import com.example.myproject.R;
 import com.example.myproject.show.onShowRecyclerViewItemClick;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 
 public class latestAdsRecyclerViewAdapter extends RecyclerView.Adapter<latestAdsRecyclerViewAdapter.ViewHolder> {
 private final ArrayList<Ad> adsArray;
 private final onLatestAdsRecyclerViewItemClick listener;
+private final Context context;
 
-    public latestAdsRecyclerViewAdapter(ArrayList<Ad> adsArray, onLatestAdsRecyclerViewItemClick listener) {
+    public latestAdsRecyclerViewAdapter(Context context,ArrayList<Ad> adsArray, onLatestAdsRecyclerViewItemClick listener) {
         this.adsArray = adsArray;
         this.listener = listener;
+        this.context = context;
+
     }
 
     @NonNull
@@ -35,9 +41,14 @@ private final onLatestAdsRecyclerViewItemClick listener;
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
+        FirebaseStorage storage=FirebaseStorage.getInstance();
         Ad ad=adsArray.get(position);
+        if(!ad.getImagesPaths().get(0).equals("")) {
+
+            Glide.with(context).load(storage.getReference(ad.getImagesPaths().get(0))).placeholder(R.drawable.car_image).into(holder.latest_ads_item_image_view);
+        }
         //holder.show_item_img.setImageDrawable());
-        holder.latest_ads_item_tv_price.setText(ad.getTime());
+        holder.latest_ads_item_tv_price.setText(ad.getPrice());
 
 
     }

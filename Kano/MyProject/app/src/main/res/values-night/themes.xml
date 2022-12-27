@@ -99,30 +99,54 @@
         <item name="android:layout_weight">1</item>
         <item name="android:scaleType">centerCrop</item>
         <item name="android:padding">2dp</item>
+
         <item name="android:contentDescription">@string/app_name</item>
 
     </style>
     <style name="AddActivityStyle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowFullscreen">true</item>
     </style>
-    <style name="AutoCompleteTextLayoutStyle"
-        parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">12dp</item>
-    </style>
-    <style name="AutoCompleteTextStyle"
-        >
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:inputType">none</item>
 
-    </style>
+
 
     <style name="MyBottomNavigationBar" >
         <item name="itemBackground">@color/gray_44</item>
         <item name="itemIconTint">@drawable/bottom_navigation_items_color</item>
         <item name="labelVisibilityMode">selected</item>
+    </style>
 
+<!--    addPostActivity styles-->
+    <style name="AddActivity_Button_Style" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/gray_80</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:textAllCaps">false</item>
+
+    </style>
+    <style name="AddActivity_Toggle_Group_Style" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="colorPrimary">@color/main</item>
+    </style>
+
+    <style name="AutoCompleteTextStyle" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:inputType">none</item>
+        <item name="colorPrimary">@color/gray_80</item>
+        <item name="boxStrokeColor">@color/gray_80</item>
+    </style>
+    <style name="AutoCompleteTextLayoutStyle"
+        parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="strokeColor">@color/main</item>
+        <item name="hintTextColor">@color/main</item>
+        <item name="boxStrokeColor">@color/main</item>
+        <item name="trackColorActive">@color/gray_12</item>
+        <item name="trackColorInactive">@color/gray_80</item>
+        <item name="colorControlActivated">@color/gray_80</item>
     </style>
 </resources>

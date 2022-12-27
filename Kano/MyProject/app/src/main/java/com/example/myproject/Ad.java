@@ -3,7 +3,7 @@ package com.example.myproject;
 import java.util.ArrayList;
 
 public class Ad {
-   private String key, uid,phoneNumber, type,location, description, information, price, date, time;
+   private String key, uid,phoneNumber, type, saleOrRent, newOrUsed,location, information, price, date, time;
   private ArrayList<String> imagesPaths;
 
     public String getPrice() {
@@ -14,19 +14,36 @@ public class Ad {
         this.price = price;
     }
 
-    public Ad(String key, String uid, String phoneNumber, String type, String location, String description, String information, String price, String date, String time, ArrayList<String> imagesPaths) {
+    public Ad(String key, String uid, String phoneNumber, String type, String saleOrRent, String newOrUsed, String location,  String information, String price, String date, String time, ArrayList<String> imagesPaths) {
       this.key = key;
       this.uid = uid;
       this.phoneNumber = phoneNumber;
       this.type = type;
+      this.saleOrRent = saleOrRent;
+      this.newOrUsed = newOrUsed;
       this.location = location;
-      this.description = description;
       this.information = information;
       this.price = price;
       this.date = date;
       this.time = time;
       this.imagesPaths = imagesPaths;
    }
+
+    public String getSaleOrRent() {
+        return saleOrRent;
+    }
+
+    public void setSaleOrRent(String saleOrRent) {
+        this.saleOrRent = saleOrRent;
+    }
+
+    public String getNewOrUsed() {
+        return newOrUsed;
+    }
+
+    public void setNewOrUsed(String newOrUsed) {
+        this.newOrUsed = newOrUsed;
+    }
 
     public void setDate(String date) {
         this.date = date;
@@ -67,9 +84,6 @@ public class Ad {
         this.location = location;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public void setInformation(String information) {
         this.information = information;
@@ -99,9 +113,6 @@ public class Ad {
       return location;
    }
 
-   public String getDescription() {
-      return description;
-   }
 
    public String getInformation() {
       return information;

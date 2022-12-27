@@ -51,7 +51,7 @@ public class ShowActivity extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                     ads.add(dataSnapshot1.getValue(Ad.class));
                 }
-                ShowRecyclerViewAdapter ShRV = new ShowRecyclerViewAdapter(ads, showItem -> {
+                ShowRecyclerViewAdapter ShRV = new ShowRecyclerViewAdapter(getBaseContext(),ads, showItem -> {
                 });
                 RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getBaseContext(), 1);
                 recyclerView.setHasFixedSize(true);

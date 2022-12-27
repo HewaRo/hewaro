@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myproject.Ad;
 import com.example.myproject.R;
+import com.example.myproject.myads.MyAdsRecyclerViewAdapter;
 import com.example.myproject.show.ShowRecyclerViewAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -57,8 +58,8 @@ public class MyAdsFragment extends Fragment {
 
     public void fillMyAdsRecyclerView(ArrayList<Ad> ads) {
 
-        ShowRecyclerViewAdapter adapter = new ShowRecyclerViewAdapter(ads, showItem -> {
-            TextView textView = showItem.findViewById(R.id.show_item_tv_date);
+        MyAdsRecyclerViewAdapter adapter = new MyAdsRecyclerViewAdapter(getContext(),ads, showItem -> {
+            TextView textView = showItem.findViewById(R.id.my_ads_item_tv_date);
             Toast.makeText(getContext(), "The date is: " + textView.getText().toString(), Toast.LENGTH_SHORT).show();
         });
 

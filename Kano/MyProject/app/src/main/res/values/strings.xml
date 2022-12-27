@@ -126,6 +126,26 @@
     <string name="contact_us">Contact Us</string>
     <string name="whatsapp">WhatsApp</string>
     <string name="follow_us_on">Follow Us On</string>
+    <string name="new_new">New</string>
+    <string name="old">Old</string>
+    <string name="for_sale">For Sale</string>
+    <string name="for_rent">For Rent</string>
+    <string name="details">Details</string>
+    <string name="type_more_information_here_about_your_product">Type more information here about your product!</string>
+    <string name="is_your_product_new_or_old">Is your product new or old?</string>
+    <string name="is_your_product_for_sale_of_for_rent">Is your product for sale or for rent?</string>
+    <string name="phone">Phone</string>
+    <string name="please_enter_a_valid_phone_number">Please enter a valid phone number!</string>
+    <string name="price">Price</string>
+    <string name="dollar_sign">$</string>
+    <string name="iqd">IQD</string>
+    <string name="please_enter_the_price_and_choose_the_currency">Please, enter the price and choose the currency:</string>
+    <string name="type">Type</string>
+    <string name="governorate">Governorate</string>
+    <string name="_14">14</string>
+    <string name="_31_682_000">31,682,000 $</string>
+    <string name="_075164438xx">075164438</string>
+    <string name="chat">Chat</string>
 
 
 </resources>

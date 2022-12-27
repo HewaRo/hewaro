@@ -92,7 +92,7 @@ public class HomeFragment extends Fragment {
     public void fillLatestAdsRecyclerView(View view, ArrayList<Ad> ads) {
         latestAdsRV = view.findViewById(R.id.fragment_home_RV_latest_ads);
         latestAdsRecyclerViewAdapter
-         adapter = new latestAdsRecyclerViewAdapter(ads, itemView -> {
+         adapter = new latestAdsRecyclerViewAdapter(getContext(),ads, itemView -> {
             TextView textView = itemView.findViewById(R.id.latest_ads_item_tv_price);
             Toast.makeText(getContext(), "The price is: "+textView.getText().toString(), Toast.LENGTH_SHORT).show();
 
@@ -146,7 +146,7 @@ public class HomeFragment extends Fragment {
                 }
                 // this code is to show just 21 items HewaRo
                while (ads.size()>21){
-                    ads.remove(0);
+                    ads.remove(ads.size()-1);
                 }
                 fillLatestAdsRecyclerView(view,ads);
             }
