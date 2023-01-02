@@ -1,29 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="12dp"
     tools:context=".Fragments.MyAdsFragment">
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fragment_my_ads_RV_my_ads"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="12dp"
-        android:visibility="gone"
-         />
-    <TextView
-        android:id="@+id/fragment_my_ads_TV_loading_no_ads_yet"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="20sp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="12dp"
+        android:gravity="center_vertical"
         android:padding="12dp"
-        android:text="@string/loading"
-        android:gravity="center"
-        />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/my_ads"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_baseline_settings_24"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_baseline_notifications_24"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_baseline_call_24"
+            app:tint="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/fragment_my_ads_card_my_ads"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="@string/_0"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/main"
+                    app:drawableStartCompat="@drawable/ic_baseline_ad_units_24"
+                    app:drawableTint="@color/white" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/my_ads"
+                    android:textSize="24sp"
+                     />
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="@string/_0"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/main"
+                    app:drawableStartCompat="@drawable/ic_baseline_remove_red_eye_24"
+                    app:drawableTint="@color/white" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/views"
+                    android:textSize="24sp"
+                    />
+
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/fragment_my_ads_card_add_post"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/main"
+                    app:drawableStartCompat="@drawable/ic_baseline_image_24"
+                    app:drawableTint="@color/white" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/add_post"
+                    android:textSize="24sp"
+                    />
+
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="@string/_0_0"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/main"
+                    app:drawableStartCompat="@drawable/ic_baseline_star_24"
+                    app:drawableTint="@color/main" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/rating"
+                    android:textSize="24sp"
+                    />
+
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="24dp"
+        android:layout_marginTop="12dp"
+        android:padding="8dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fragment_my_ads_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp"
+            />
+
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

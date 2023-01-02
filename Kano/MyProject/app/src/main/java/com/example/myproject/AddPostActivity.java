@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,6 +40,7 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
     TextInputEditText etPhone, etPrice, etDetails;
     ImageView image1, image2, image3;
     Button addBTN;
+    ProgressBar progressBar;
     MaterialButtonToggleGroup mBTGNewOLd, mBTGSaleRent, mBDollarOrDinar;
 
     // Others
@@ -54,12 +57,13 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
     ArrayList<String> imagePathsInFirebaseStorage;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_post);
         findViews();
+        spinnerType.setOnItemClickListener((adapterView, view, i, l) -> spinnerType.setError(null, null));
+        spinnerGovernorate.setOnItemClickListener((adapterView, view, i, l) -> spinnerGovernorate.setError(null, null));
 
 
     }
@@ -105,6 +109,9 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference().child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
         imagePathsInFirebaseStorage = new ArrayList<>();
+
+        //progress bar
+        progressBar = findViewById(R.id.add_ad_progress_bar);
     }
 
     @Override
@@ -114,6 +121,7 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
         }
         if (view == addBTN) {
             try {
+                prepareProgressbar(true);
                 uploadProfileImageToFirebase();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -121,7 +129,6 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
 
         }
     }
-
 
     // Images methods
 
@@ -131,6 +138,7 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         intent.setAction(Intent.ACTION_GET_CONTENT);
         Intent chooser = Intent.createChooser(intent, "Select pictures: ");
+        //noinspection deprecation
         startActivityForResult(chooser, IMAGE_REQUEST_CODE);
     }
 
@@ -138,8 +146,8 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
         image1.setImageURI(null);
         image2.setImageURI(null);
         image3.setImageURI(null);
-        while (uriArrayList.size()>3){
-            uriArrayList.remove(uriArrayList.size()-1);
+        while (uriArrayList.size() > 3) {
+            uriArrayList.remove(0);
         }
         switch (uriArrayList.size()) {
             case 1:
@@ -154,10 +162,7 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
                 image2.setImageURI(uriArrayList.get(1));
                 image3.setImageURI(uriArrayList.get(2));
                 break;
-            default:
-                image1.setImageURI(uriArrayList.get(uriArrayList.size() - 3));
-                image2.setImageURI(uriArrayList.get(uriArrayList.size() - 2));
-                image3.setImageURI(uriArrayList.get(uriArrayList.size() - 1));
+
         }
     }
 
@@ -165,7 +170,7 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
 
     public void addAdToFirebase(Ad ad) {
 
-
+        prepareProgressbar(true);
         DatabaseReference myRef1 = myRef.child(ad.getType()).child(Objects.requireNonNull(ad.getKey()));
         DatabaseReference myRefAll = myRef.child("All").child(Objects.requireNonNull(ad.getKey()));
         DatabaseReference myRefMyAds = myRef.child("MyAds").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child(Objects.requireNonNull(ad.getKey()));
@@ -173,17 +178,23 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
         myRefAll.setValue(ad);
         myRefMyAds.setValue(ad);
         myRef1.setValue(ad).addOnCompleteListener(task -> {
-            if (!task.isSuccessful()) {
-                //Toast.makeText(AddPostActivity.this, "Your ad has been published successfully!", Toast.LENGTH_SHORT).show();
+            if (task.isSuccessful()) {
+                finish();
+            } else {
+                prepareProgressbar(false);
                 Toast.makeText(AddPostActivity.this, Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
-
             }
         });
     }
 
     public void uploadProfileImageToFirebase() throws IOException {
         String key = myRef.push().getKey();
-        for (int i =0;i < uriArrayList.size();i++){
+        prepareProgressbar(true);
+        if (!isEverythingOk()) {
+            prepareProgressbar(false);
+            return;
+        }
+        for (int i = 0; i < uriArrayList.size(); i++) {
             Uri uri = uriArrayList.get(i);
             Bitmap selectedImageBitMap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -192,10 +203,11 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
             StorageReference currentStorageRef = storageRef.child(getUserUID()).child(Objects.requireNonNull(key)).child(UUID.nameUUIDFromBytes(selectedImageBytes).toString());
             int finalI = i;
             currentStorageRef.putBytes(selectedImageBytes).addOnCompleteListener(task -> {
+                prepareProgressbar(false);
                 if (task.isSuccessful()) {
-                    Toast.makeText(this, "Image uploaded successfully!", Toast.LENGTH_SHORT).show();
-                    imagePathsInFirebaseStorage.add( currentStorageRef.getPath());
-                    if (finalI == uriArrayList.size()-1 && imagePathsInFirebaseStorage.size()>0){
+                    imagePathsInFirebaseStorage.add(currentStorageRef.getPath());
+                    if (finalI == uriArrayList.size() - 1 && imagePathsInFirebaseStorage.size() > 0) {
+
                         Ad ad = new Ad(key,
                                 getUserUID(),
                                 getPhoneNumber(),
@@ -208,11 +220,13 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
                                 getDate(),
                                 getTime(),
                                 imagePathsInFirebaseStorage);
+                        prepareProgressbar(false);
                         addAdToFirebase(ad);
                     }
                 } else {
-                    Toast.makeText(this, "Image did not upload successfully!" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.sorry_something_went_wrong) + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                 }
+
             });
         }
 
@@ -228,37 +242,40 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public String getPhoneNumber() {
-        String phone = Objects.requireNonNull(etPhone.getText()).toString() ;
+        String phone = Objects.requireNonNull(etPhone.getText()).toString();
         if (phone.trim().equals("")) return null;
         return phone;
     }
 
     public String getType() {
-        String type = translateTypeToEnglish(spinnerType.getText().toString());
-        if (type.trim().equals("")) return null;
-        return type;
+
+        return translateTypeToEnglish(spinnerType.getText().toString());
     }
 
     public String getSaleOrRent() {
         MaterialButton mB = findViewById(mBTGSaleRent.getCheckedButtonId());
-        String SaleOrRent = Objects.requireNonNull(mB.getText()).toString() ;
+        String SaleOrRent = Objects.requireNonNull(mB.getText()).toString();
         if (SaleOrRent.trim().equals("")) return null;
         return SaleOrRent;
     }
+
     public String getNewOrUsed() {
         MaterialButton mB = findViewById(mBTGNewOLd.getCheckedButtonId());
-        String NewOrUsed = Objects.requireNonNull(mB.getText()).toString() ;
+        String NewOrUsed = Objects.requireNonNull(mB.getText()).toString();
         if (NewOrUsed.trim().equals("")) return null;
         return NewOrUsed;
     }
+
     public String getLocation() {
-        String location = Objects.requireNonNull(spinnerGovernorate.getText()).toString() ;
-        if (location.trim().equals("")) return null;
-        return location;
+
+
+        String governorate = Objects.requireNonNull(spinnerGovernorate.getText()).toString();
+        if (governorate.trim().equals("")) return null;
+        return governorate;
     }
 
     public String getInformation() {
-        String information = Objects.requireNonNull(etDetails.getText()).toString() ;
+        String information = Objects.requireNonNull(etDetails.getText()).toString();
         if (information.trim().equals("")) return null;
         return information;
     }
@@ -266,8 +283,8 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
     public String getPrice() {
         MaterialButton mB = findViewById(mBDollarOrDinar.getCheckedButtonId());
         String information = Objects.requireNonNull(etPrice.getText())
-                +" "+mB.getText().toString();
-        if (information.trim().equals("")) return null;
+                + " " + mB.getText().toString();
+        if (etPrice.getText().toString().trim().equals("")) return null;
         return information;
     }
 
@@ -278,8 +295,6 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
     public String getTime() {
         return convertArabicDigitsToEnglish(new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date()));
     }
-
-
 
 
     @Override
@@ -303,19 +318,43 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
     // Secondary methods
 
     public String translateTypeToEnglish(String typeInOtherLanguage) {
-        String typeInEnglish = null;
+        String typeInEnglish;
 
         if (typeInOtherLanguage.equals(getString(R.string.Cars))) typeInEnglish = Keys.CARS;
+
         else if (typeInOtherLanguage.equals(getString(R.string.Motorcycles)))
             typeInEnglish = Keys.MOTORCYCLE;
+
         else if (typeInOtherLanguage.equals(getString(R.string.Mobile)))
             typeInEnglish = Keys.MOBILE;
-        else if (typeInOtherLanguage.equals(getString(R.string.LaptopandPc)))
+
+        else if (typeInOtherLanguage.equals(getString(R.string.Laptop_and_Pc)))
             typeInEnglish = Keys.LAPTOP_AND_PC;
-        else if (typeInOtherLanguage.equals(getString(R.string.Elctronics)))
+
+        else if (typeInOtherLanguage.equals(getString(R.string.Electronics)))
             typeInEnglish = Keys.ELECTRONICS;
+
         else if (typeInOtherLanguage.equals(getString(R.string.Realstate)))
             typeInEnglish = Keys.REALSTATE;
+
+        else if (typeInOtherLanguage.equals(getString(R.string.Pets)))
+            typeInEnglish = Keys.PETS;
+
+        else if (typeInOtherLanguage.equals(getString(R.string.Home)))
+            typeInEnglish = Keys.HOME;
+
+        else if (typeInOtherLanguage.equals(getString(R.string.Fashion)))
+            typeInEnglish = Keys.FASHION;
+
+        else if (typeInOtherLanguage.equals(getString(R.string.Sports)))
+            typeInEnglish = Keys.FOOD;
+
+        else if (typeInOtherLanguage.equals(getString(R.string.Sports)))
+            typeInEnglish = Keys.SPORTS;
+        else if (typeInOtherLanguage.equals(""))
+            return null;
+
+        else typeInEnglish = Keys.OTHER;
 
         return typeInEnglish;
     }
@@ -331,5 +370,53 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
                 .replace('٨', '8')
                 .replace('٩', '9')
                 .replace('٠', '0');
+    }
+
+    public boolean isEverythingOk() {
+        if (uriArrayList.size() <= 0) {
+            Toast.makeText(this, "Please upload one image at least!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (getLocation() == null) {
+            spinnerGovernorate.setError("Required");
+            spinnerGovernorate.requestFocus();
+            return false;
+        }
+        if (getType() == null) {
+            spinnerType.setError("Required");
+            spinnerType.requestFocus();
+            return false;
+        }
+        if (getPrice() == null) {
+            etPrice.setError("Required");
+            etPrice.requestFocus();
+            return false;
+        }
+        if (getPhoneNumber() == null) {
+            etPhone.setError("Required");
+            etPhone.requestFocus();
+            return false;
+        }
+        if (getUserUID() == null) {
+            Toast.makeText(this, "Unfortunately, something went wrong!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+
+        return true;
+    }
+
+    public void prepareProgressbar(boolean showProgressbar) {
+        if (showProgressbar) {
+            progressBar.setVisibility(View.VISIBLE);
+            addBTN.setText(null);
+        } else {
+            progressBar.setVisibility(View.GONE);
+            addBTN.setText(getString(R.string.publish));
+
+
+        }
+        addBTN.setEnabled(!showProgressbar);
+
     }
 }

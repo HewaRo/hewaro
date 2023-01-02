@@ -10,33 +10,25 @@
     <string name="Cars">Cars</string>
     <string name="Motorcycles">Motorcycles</string>
     <string name="Mobile">Mobile</string>
-    <string name="LaptopandPc">Laptop and PC</string>
+    <string name="Laptop_and_Pc">Laptop and PC</string>
     <string name="Realstate">Realstate</string>
     <string name="already_have_an_account">Already have account</string>
     <string name="sign_up">Sign up</string>
     <string name="password">Password</string>
     <string name="name">Name</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="Elctronics">Elctronics</string>
+    <string name="Electronics">Elctronics</string>
     <string name="Bikes">Bikes</string>
     <string name="HandC">Helmets and Clothes</string>
-    <string name="PandA">Parts and Accesssories</string>
+    <string name="Panda">Parts and Accesssories</string>
     <string name="Duhok">Duhok</string>
     <string name="bmw">BMW</string>
     <string name="MG">MG</string>
     <string name="Tesla">Tesla</string>
     <string name="ClassA">Class A</string>
-    <string name="FirstCalss">FirstClass</string>
-    <string name="secondCalss">Second Class</string>
-    <string name="CalssM">Class M</string>
-    <string name="CalssX">Class X</string>
-    <string name="Other">Other</string>
-    <string name="Calss3">Class 3</string>
-    <string name="ClassS">Class S</string>
-    <string name="S350">S350</string>
-    <string name="C550">550</string>
-    <string name="MG5">MG5</string>
-    <string name="MobileandTaplet">Mobile And Tab</string>
+    <string name="First_Class">FirstClass</string>
+    <string name="second_class">Second Class</string>
+    <string name="Mobile_and_Tablet">Mobile And Tab</string>
     <string name="tablet">Tablet</string>
     <string name="SW">Smart watches</string>
     <string name="Baghdad">Baghdad</string>
@@ -58,7 +50,7 @@
 
     <!--    afterChooseTypeMotors-->
 
-    <string name="spare_parts_of_motorss">Spare parts of motorcycles</string>
+    <string name="spare_parts_of_motorcycles">Spare parts of motorcycles</string>
     <string name="select_your_governorate">Select your governorate</string>
 
 
@@ -95,4 +87,77 @@
     <string name="loading">Loading…</string>
     <string name="no_ads_yet">Unfortunately, you have not\nadded any ADs yet!</string>
     <string name="open_shop">Open Shop</string>
+    <string name="my_account">My Account</string>
+    <string name="membership_id">Membership ID</string>
+    <string name="null0">-</string>
+    <string name="account_details">Account Details</string>
+    <string name="membership_type">Membership Type</string>
+    <string name="free">Free</string>
+    <string name="_0">0</string>
+    <string name="views">Views</string>
+    <string name="_0_0">0.0</string>
+    <string name="rating">Rating</string>
+    <string name="hello_guest">Hello Guest</string>
+    <string name="wallet">Wallet</string>
+    <string name="add_credit_or_recharge">* Add credit or recharge voucher to top up your Wallet.\n* Do you want to boost more than one Ad? Buy a bundle now.</string>
+    <string name="credit">Credit</string>
+    <string name="open_wallet">Open Wallet</string>
+    <string name="job_applications">Job Applications</string>
+    <string name="job_profile">Job Profile</string>
+    <string name="complete_your_cv">* Complete your CV to increase your chances of getting hired.\n* It\'s not possible to apply for a job if completeness score is less than 50%></string>
+    <string name="bundles">Bundles</string>
+    <string name="complete_your_job_profile">Complete your job profile</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="invite_friends">Invite Friends</string>
+    <string name="my_ads_page">My Ads Page</string>
+    <string name="share">Share</string>
+    <string name="contact_us_know">Contact us know</string>
+    <string name="do_you_need_help">Do you need help?</string>
+    <string name="sales_team">Sales Team</string>
+    <string name="faq">FAQ      </string>
+    <string name="contact_us">Contact Us</string>
+    <string name="whatsapp">WhatsApp</string>
+    <string name="follow_us_on">Follow Us On</string>
+    <string name="new_new">New</string>
+    <string name="old">Old</string>
+    <string name="for_sale">For Sale</string>
+    <string name="for_rent">For Rent</string>
+    <string name="details">Details</string>
+    <string name="type_more_information_here_about_your_product">Type more information here about your product!</string>
+    <string name="is_your_product_new_or_old">Is your product new or old?</string>
+    <string name="is_your_product_for_sale_of_for_rent">Is your product for sale or for rent?</string>
+    <string name="phone">Phone</string>
+    <string name="please_enter_a_valid_phone_number">Please enter a valid phone number!</string>
+    <string name="price">Price</string>
+    <string name="dollar_sign">$</string>
+    <string name="iqd">IQD</string>
+    <string name="please_enter_the_price_and_choose_the_currency">Please, enter the price and choose the currency:</string>
+    <string name="type">Type</string>
+    <string name="governorate">Governorate</string>
+    <string name="_14">14</string>
+    <string name="_31_682_000">31,682,000 $</string>
+    <string name="_075164438xx">075164438</string>
+    <string name="chat">Chat</string>
+    <string name="calculate_your_loan">Calculate Your Loan</string>
+    <string name="favorite">Favorite</string>
+    <string name="all">All</string>
+    <string name="no_ads_in_this_action_yet">No ads in this section yet!</string>
+    <string name="_245">245 $</string>
+    <string name="add_post">Add Post</string>
+
+    <!--    list my ads-->
+
+    <string name="drafts">Drafts</string>
+    <string name="favorite_ads">Favorite Ads</string>
+    <string name="favorite_searches">Favorite Searches</string>
+    <string name="recently_viewed">Recently Viewed</string>
+    <string name="recently_searches">Recently Searches</string>
+    <string name="following_ads">Following Ads</string>
+    <string name="Pets">Pets</string>
+    <string name="Home">Home</string>
+    <string name="Fashion">Fashion</string>
+    <string name="Sports">Sports</string>
+    <string name="Food">Food</string>
+    <string name="no_phone">No phone</string>
 </resources>

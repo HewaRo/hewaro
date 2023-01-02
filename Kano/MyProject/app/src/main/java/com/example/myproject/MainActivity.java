@@ -31,70 +31,65 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         findViews();
 
         floatingBTN.setOnClickListener(view -> {
+            floatingBTN.setEnabled(false);
             Intent intent = new Intent(this, AddPostActivity.class);
             startActivity(intent);
+            floatingBTN.setEnabled(true);
 
         });
 
         btm.setOnItemSelectedListener(item -> {
-            int item_id=item.getItemId();
+            int item_id = item.getItemId();
             Fragment fragment = new HomeFragment();
-            if(item_id==R.id.menu_bottom_navigation_home){
+            if (item_id == R.id.menu_bottom_navigation_home) {
                 fragment = new HomeFragment();
-            }
-            else if(item_id==R.id.menu_bottom_navigation_chats){
+            } else if (item_id == R.id.menu_bottom_navigation_chats) {
                 fragment = new ChatFragment();
-            }
-            else if(item_id==R.id.menu_bottom_navigation_camera){
+            } else if (item_id == R.id.menu_bottom_navigation_camera) {
                 Intent intent = new Intent(this, AddPostActivity.class);
                 startActivity(intent);
                 return false;
-            }
-
-            else if(item_id==R.id.menu_bottom_navigation_my_ads){
+            } else if (item_id == R.id.menu_bottom_navigation_my_ads) {
                 fragment = new MyAdsFragment();
-            }
-            else if(item_id==R.id.menu_bottom_navigation_account){
+            } else if (item_id == R.id.menu_bottom_navigation_account) {
                 fragment = new MyAccountFragment();
             }
             replaceFragment(fragment);
-
             return true;
         });
-
     }
-    public void findViews(){
-        fbA=FirebaseAuth.getInstance();
-        btm=findViewById(R.id.main_bottom_navigation_view);
+
+    public void findViews() {
+        fbA = FirebaseAuth.getInstance();
+        btm = findViewById(R.id.main_bottom_navigation_view);
         replaceFragment(new HomeFragment());
-
         floatingBTN = findViewById(R.id.main_floating_action_button);
-
+        floatingBTN.setEnabled(true);
     }
+
     private void replaceFragment(Fragment fragment) {
-        FragmentManager fm=getSupportFragmentManager();
-        FragmentTransaction ft=fm.beginTransaction();
-        ft.replace(R.id.frame_container,fragment);
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.frame_container, fragment);
         ft.commit();
     }
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.up_menu,menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.up_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId()==R.id.Logout){
+        if (item.getItemId() == R.id.Logout) {
             fbA.signOut();
-            Intent intent=new Intent(getBaseContext(),authenitcation_activty.class);
+            Intent intent = new Intent(getBaseContext(), authenitcation_activty.class);
             startActivity(intent);
             finish();
 

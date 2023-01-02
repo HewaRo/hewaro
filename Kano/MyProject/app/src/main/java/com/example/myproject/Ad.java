@@ -1,8 +1,9 @@
 package com.example.myproject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Ad {
+public class Ad implements Serializable {
    private String key, uid,phoneNumber, type, saleOrRent, newOrUsed,location, information, price, date, time;
   private ArrayList<String> imagesPaths;
 

@@ -514,8 +514,8 @@
                             android:layout_marginStart="4dp"
                             android:layout_weight="1"
                             android:text="@string/_0"
-                            android:textStyle="bold"
-                            android:textSize="24sp" />
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -550,8 +550,8 @@
                             android:layout_marginStart="4dp"
                             android:layout_weight="1"
                             android:text="@string/_0"
-                            android:textStyle="bold"
-                            android:textSize="24sp" />
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -594,16 +594,16 @@
                             android:layout_marginStart="4dp"
                             android:layout_weight="1"
                             android:text="@string/invite_friends"
-                            android:textStyle="bold"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
+                            android:layout_marginTop="8dp"
                             android:layout_weight="1"
                             android:text="@string/share"
                             android:textSize="24sp"
-                            android:layout_marginTop="8dp"
                             app:drawableEndCompat="@drawable/ic_baseline_arrow_forward_24"
                             app:drawableTint="@color/main" />
 
@@ -631,16 +631,16 @@
                             android:layout_marginStart="4dp"
                             android:layout_weight="1"
                             android:text="@string/my_ads_page"
-                            android:textStyle="bold"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
+                            android:layout_marginTop="8dp"
                             android:layout_weight="1"
                             android:text="@string/share"
                             android:textSize="24sp"
-                            android:layout_marginTop="8dp"
                             app:drawableEndCompat="@drawable/ic_baseline_arrow_forward_24"
                             app:drawableTint="@color/main" />
 

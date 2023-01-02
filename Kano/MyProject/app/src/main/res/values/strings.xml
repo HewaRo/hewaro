@@ -10,21 +10,26 @@
     <string name="password">Password</string>
     <string name="name">Name</string>
     <string name="log_in">Log In</string>
-    <string name="don_t_have_an_account">Dont have account</string>
+    <string name="don_t_have_an_account">Do not have account</string>
     <string name="logout">LogOut</string>
     <string name="Cars">Cars</string>
     <string name="Motorcycles">Motorcycles</string>
     <string name="Mobile">Mobile</string>
-    <string name="LaptopandPc">Laptop and PC</string>
+    <string name="Laptop_and_Pc">Computers</string>
     <string name="Realstate">Realstate</string>
-    <string name="Elctronics">Elctronics</string>
+    <string name="Pets">Pets</string>
+    <string name="Home">Home</string>
+    <string name="Fashion">Fashion</string>
+    <string name="Sports">Sports</string>
+    <string name="Food">Food</string>
+    <string name="Electronics">Electronics</string>
     <string name="CarsFS">Cars for sale</string>
     <string name="CarsFR">Cars for rent</string>
     <string name="CarsParts">Car parts</string>
     <string name="Bikes">Bikes</string>
     <string name="HandC">Helmets and Clothes</string>
-    <string name="PandA">Parts and Accesssories</string>
-    <string name="MobileandTaplet">Mobile And Tab</string>
+    <string name="Panda">Parts and Accessories</string>
+    <string name="Mobile_and_Tablet">Mobile And Tab</string>
     <string name="tablet">Tablet</string>
     <string name="SW">Smart watches</string>
     <string name="Baghdad">Baghdad</string>
@@ -35,16 +40,8 @@
     <string name="MG">MG</string>
     <string name="Tesla">Tesla</string>
     <string name="ClassA">Class A</string>
-    <string name="FirstCalss">FirstClass</string>
-    <string name="secondCalss">Second Class</string>
-    <string name="CalssM">Class M</string>
-    <string name="CalssX">Class X</string>
-    <string name="Other">Other</string>
-    <string name="Calss3">Class 3</string>
-    <string name="ClassS">Class S</string>
-    <string name="S350">S350</string>
-    <string name="C550">550</string>
-    <string name="MG5">MG5</string>
+    <string name="First_Class">First Class</string>
+    <string name="second_class">Second Class</string>
     <string name="select_type">Select Type</string>
     <string name="test">Test</string>
 
@@ -57,7 +54,7 @@
 
     <!--    afterChooseTypeMotors-->
 
-    <string name="spare_parts_of_motorss">Spare parts of motorcycles</string>
+    <string name="spare_parts_of_motorcycles">Spare parts of motorcycles</string>
     <string name="select_your_governorate">Select your governorate</string>
 
 
@@ -146,6 +143,23 @@
     <string name="_31_682_000">31,682,000 $</string>
     <string name="_075164438xx">075164438</string>
     <string name="chat">Chat</string>
+    <string name="calculate_your_loan">Calculate Your Loan</string>
+    <string name="favorite">Favorite</string>
+    <string name="all">All</string>
+    <string name="no_ads_in_this_action_yet">No ads in this section yet!</string>
+    <string name="_245">245 $</string>
+    <string name="add_post">Add Post</string>
+
+<!--    list my ads-->
+
+    <string name="drafts">Drafts</string>
+    <string name="favorite_ads">Favorite Ads</string>
+    <string name="favorite_searches">Favorite Searches</string>
+    <string name="recently_viewed">Recently Viewed</string>
+    <string name="recently_searches">Recently Searches</string>
+    <string name="following_ads">Following Ads</string>
+    <string name="no_phone">No phone</string>
+    <string name="sorry_something_went_wrong">Sorry, something went wrong!</string>
 
 
 </resources>
